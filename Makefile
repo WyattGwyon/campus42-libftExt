@@ -6,7 +6,7 @@
 #    By: clouden <clouden@student.42madrid.com>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/15 18:43:41 by clouden           #+#    #+#              #
-#    Updated: 2025/05/26 12:37:50 by clouden          ###   ########.fr        #
+#    Updated: 2025/10/15 21:47:49 by clouden          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,69 +16,99 @@ GREEN   =	\033[0;32m
 
 # Compiler and flags
 CC      = cc
-CFLAGS  = -Wall -Wextra -Werror
+CFLAGS  = -Wall -Wextra -Werror -Iinclude
 CFLAGS	+= -g3
 
 # Name of the output static library
 NAME    = libft.a
 
 # Source and object files
-SRCS    =	ft_atoi.c\
-			ft_itoa.c\
-			ft_putnbr_fd.c\
-			ft_strlcpy.c\
-			ft_tolower.c\
-			ft_bzero.c\
-			ft_memchr.c\
-			ft_putstr_fd.c\
-			ft_strlen.c\
-			ft_toupper.c\
-			ft_calloc.c\
-			ft_memcmp.c\
-			ft_split.c\
-			ft_strmapi.c\
-			ft_isalnum.c\
-			ft_memcpy.c\
-			ft_strchr.c\
-			ft_strncmp.c\
-			ft_isalpha.c\
-			ft_memmove.c\
-			ft_strdup.c\
-			ft_strnstr.c\
-			ft_isascii.c\
-			ft_memset.c\
-			ft_striteri.c\
-			ft_strrchr.c\
-			ft_isdigit.c\
-			ft_putchar_fd.c\
-			ft_strjoin.c\
-			ft_strjoin_n.c\
-			ft_strtrim.c\
-			ft_isprint.c\
-			ft_putendl_fd.c\
-			ft_strlcat.c\
-			ft_substr.c\
-			ft_lstnew.c\
-			ft_lstadd_front.c\
-			ft_lstsize.c\
-			ft_lstlast.c\
-			ft_lstadd_back.c\
-			ft_lstdelone.c\
-			ft_lstclear.c\
-			ft_lstiter.c\
-			ft_lstmap.c\
-			ft_atol.c\
-			ft_atof.c\
-			ft_strarr_free.c\
-			ft_strarr_len.c\
+SRCS    =	ft_strarr_len.c\
 			ft_strarr_join.c\
+
+# Define input/output 
+IO_DIR	=	io/
+IO_SRCS	=	$(IO_DIR)ft_putendl_fd.c\
+			$(IO_DIR)ft_putchar_fd.c\
+			$(IO_DIR)ft_putstr_fd.c\
+			$(IO_DIR)ft_putnbr_fd.c\
+
+# Define math	 
+MATH_DIR	=	math/
+MATH_SRCS	=	$(MATH_DIR)ft_power.c\
+
+# Define chars
+CHAR_DIR 	=	chars/
+CHAR_SRCS	=	$(CHAR_DIR)ft_isalnum.c\
+				$(CHAR_DIR)ft_isalpha.c\
+				$(CHAR_DIR)ft_isascii.c\
+				$(CHAR_DIR)ft_isdigit.c\
+				$(CHAR_DIR)ft_isprint.c\
+				$(CHAR_DIR)ft_tolower.c\
+				$(CHAR_DIR)ft_toupper.c
+
+# Define conversions 
+CONV_DIR	=	convs/
+CONV_SRCS	=	$(CONV_DIR)ft_itoa.c\
+				$(CONV_DIR)ft_atol.c\
+				$(CONV_DIR)ft_atof.c\
+				$(CONV_DIR)ft_atoi.c
+
+# Define memory
+MEM_DIR		=	memory/
+MEM_SRCS	=	$(MEM_DIR)ft_bzero.c\
+				$(MEM_DIR)ft_memchr.c\
+				$(MEM_DIR)ft_memcmp.c\
+				$(MEM_DIR)ft_memcpy.c\
+				$(MEM_DIR)ft_memmove.c\
+				$(MEM_DIR)ft_memset.c\
+				$(MEM_DIR)ft_calloc.c\
+				$(MEM_DIR)ft_strarr_free.c
+
+# Define lists 
+LIST_DIR	=	lists/
+LIST_SRCS	=	$(LIST_DIR)ft_lstnew.c\
+				$(LIST_DIR)ft_lstadd_front.c\
+				$(LIST_DIR)ft_lstsize.c\
+				$(LIST_DIR)ft_lstlast.c\
+				$(LIST_DIR)ft_lstadd_back.c\
+				$(LIST_DIR)ft_lstdelone.c\
+				$(LIST_DIR)ft_lstclear.c\
+				$(LIST_DIR)ft_lstiter.c\
+				$(LIST_DIR)ft_lstmap.c
+
+# Define strings
+STR_DIR		=	strings/
+STR_SRCS	=	$(STR_DIR)ft_strlcpy.c\
+				$(STR_DIR)ft_strlcat.c\
+				$(STR_DIR)ft_substr.c\
+				$(STR_DIR)ft_strlen.c\
+				$(STR_DIR)ft_strjoin.c\
+				$(STR_DIR)ft_strtrim.c\
+				$(STR_DIR)ft_strjoin_n.c\
+				$(STR_DIR)ft_split.c\
+				$(STR_DIR)ft_strmapi.c\
+				$(STR_DIR)ft_strchr.c\
+				$(STR_DIR)ft_strdup.c\
+				$(STR_DIR)ft_strnstr.c\
+				$(STR_DIR)ft_strncmp.c\
+				$(STR_DIR)ft_striteri.c\
+				$(STR_DIR)ft_strrchr.c
 
 # Define printf
 PRINTF_DIR 	= 	printf/
 PRINTF_SRCS	= 	$(PRINTF_DIR)ft_printf.c\
 
 
-ALL_SRCS 	= 	$(SRCS) $(PRINTF_SRCS)
+ALL_SRCS 	= 	$(SRCS) \
+				$(PRINTF_SRCS) \
+				$(MEM_SRCS) \
+				$(LIST_SRCS) \
+				$(STR_SRCS) \
+				$(CONV_SRCS) \
+				$(CHAR_SRCS) \
+				$(MATH_SRCS) \
+				$(IO_SRCS)
 
 OBJS		= 	$(ALL_SRCS:.c=.o)
 
