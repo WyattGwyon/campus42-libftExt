@@ -10,30 +10,34 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-// #include <libft.h>
+#include <libft.h>
 
-// void *ft_realloc(void *ptr, size_t size)
-// {
-// 	size_t	i;
-// 	void *mem;
+void	*ft_realloc(void *ptr, size_t size)
+{
+	size_t	i;
+	void	*mem;
 
-// 	i = 0;
-// 	if (size == 0)
-// 	{
-// 		if (ptr)
-// 			free(ptr);
-// 		return (NULL);
-// 	}
-// 	mem = malloc(size);
-// 	if (!mem)
-// 		return (NULL);
-// 	while (i < size && ((unsigned char *)ptr)[i])
-// 	{
-// 		((unsigned char *)mem)[i] = ((unsigned char *)ptr)[i];					
-// 		i++;		
-// 	} 	
-// 	free(ptr);
-// 	ptr = NULL;
-// 	return(mem);		
-// }
+	i = 0;
+	mem = malloc(size);
+	while (i < size)
+	{
+		((unsigned char*)mem)[i] = 0;
+		i++;
+	}
+	if (!ptr)
+		return (mem);
+	if (size == 0)
+	{
+		free(ptr);
+		return (NULL);
+	}
+	i = 0;
+	while (i < size || ((unsigned char *)ptr)[i])
+	{
+		((unsigned char *)mem)[i] = ((unsigned char *)ptr)[i];
+		i++;
+	}
+	free(ptr);
+	return(mem);
+}
 
