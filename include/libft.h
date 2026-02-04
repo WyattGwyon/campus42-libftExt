@@ -6,7 +6,7 @@
 /*   By: clouden <clouden@student.42madrid.com      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/04/10 13:57:14 by clouden           #+#    #+#             */
-/*   Updated: 2025/07/25 18:01:33 by clouden          ###   ########.fr       */
+/*   Updated: 2026/02/04 17:21:27 by clouden          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,5 +82,6 @@ double		ft_atof(const char *str);
 void		ft_strarr_free(char ***arr);
 int			ft_strarr_len(char **arr);
 char		**ft_strarr_join(char **arr1, char **arr2);
+int			ft_printf(const char *fmt, ...);
 
 #endif

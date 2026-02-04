@@ -6,7 +6,7 @@
 #    By: clouden <clouden@student.42madrid.com>     +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2025/05/15 18:43:41 by clouden           #+#    #+#              #
-#    Updated: 2025/10/15 21:47:49 by clouden          ###   ########.fr        #
+#    Updated: 2026/02/04 19:31:46 by clouden          ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,8 +23,6 @@ CFLAGS	+= -g3
 NAME    = libft.a
 
 # Source and object files
-SRCS    =	ft_strarr_len.c\
-			ft_strarr_join.c\
 
 # Define input/output 
 IO_DIR	=	io/
@@ -32,8 +30,11 @@ IO_SRCS	=	$(IO_DIR)ft_putendl_fd.c\
 			$(IO_DIR)ft_putchar_fd.c\
 			$(IO_DIR)ft_putstr_fd.c\
 			$(IO_DIR)ft_putnbr_fd.c\
+			$(IO_DIR)ft_putunbr_fd.c\
+			$(IO_DIR)ft_puthex_fd.c\
+			$(IO_DIR)ft_printf.c\
 
-# Define math	 
+# Define math	
 MATH_DIR	=	math/
 MATH_SRCS	=	$(MATH_DIR)ft_power.c\
 
@@ -47,7 +48,7 @@ CHAR_SRCS	=	$(CHAR_DIR)ft_isalnum.c\
 				$(CHAR_DIR)ft_tolower.c\
 				$(CHAR_DIR)ft_toupper.c
 
-# Define conversions 
+# Define conversions
 CONV_DIR	=	convs/
 CONV_SRCS	=	$(CONV_DIR)ft_itoa.c\
 				$(CONV_DIR)ft_atol.c\
@@ -65,7 +66,7 @@ MEM_SRCS	=	$(MEM_DIR)ft_bzero.c\
 				$(MEM_DIR)ft_calloc.c\
 				$(MEM_DIR)ft_strarr_free.c
 
-# Define lists 
+# Define lists
 LIST_DIR	=	lists/
 LIST_SRCS	=	$(LIST_DIR)ft_lstnew.c\
 				$(LIST_DIR)ft_lstadd_front.c\
@@ -94,14 +95,15 @@ STR_SRCS	=	$(STR_DIR)ft_strlcpy.c\
 				$(STR_DIR)ft_strncmp.c\
 				$(STR_DIR)ft_striteri.c\
 				$(STR_DIR)ft_strrchr.c
+				$(STR_DIR)ft_strarr_len.c\
+				$(STR_DIR)ft_strarr_join.c\
 
-# Define printf
-PRINTF_DIR 	= 	printf/
-PRINTF_SRCS	= 	$(PRINTF_DIR)ft_printf.c\
+# Define get_next_line
+GNL_DIR 	= 	get_next_line/
+GNL_SRCS	= 	$(GNL_DIR)get_next_line.c\
+				$(GNL_DIR)get_next_line_utils.c
 
-
-ALL_SRCS 	= 	$(SRCS) \
-				$(PRINTF_SRCS) \
+ALL_SRCS 	=	$(GNL_SRCS) \
 				$(MEM_SRCS) \
 				$(LIST_SRCS) \
 				$(STR_SRCS) \
@@ -111,11 +113,6 @@ ALL_SRCS 	= 	$(SRCS) \
 				$(IO_SRCS)
 
 OBJS		= 	$(ALL_SRCS:.c=.o)
-
-#Test file
-TEST_SRC = .test.c
-TEST_OBJ = $(TEST_SRC:.c=.o)
-TEST_BIN = test_libft
 
 # Default rule
 all: $(NAME)
