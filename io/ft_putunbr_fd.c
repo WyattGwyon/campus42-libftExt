@@ -19,7 +19,7 @@ int	ft_putunbr_fd(unsigned int n, int fd)
 	bytes = 0;
 	if (n >= 10)
 		bytes += ft_putunbr_fd(n / 10, fd);
-	bytes += ft_putchar_fd(n % 10 + '0', fd);
+	bytes += (int)ft_putchar_fd(n % 10 + '0', fd);
 	return (bytes);
 }
 

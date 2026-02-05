@@ -32,7 +32,6 @@ IO_SRCS	=	$(IO_DIR)ft_putendl_fd.c\
 			$(IO_DIR)ft_putnbr_fd.c\
 			$(IO_DIR)ft_putunbr_fd.c\
 			$(IO_DIR)ft_puthex_fd.c\
-			$(IO_DIR)ft_printf.c\
 
 # Define math	
 MATH_DIR	=	math/
@@ -94,7 +93,7 @@ STR_SRCS	=	$(STR_DIR)ft_strlcpy.c\
 				$(STR_DIR)ft_strnstr.c\
 				$(STR_DIR)ft_strncmp.c\
 				$(STR_DIR)ft_striteri.c\
-				$(STR_DIR)ft_strrchr.c
+				$(STR_DIR)ft_strrchr.c\
 				$(STR_DIR)ft_strarr_len.c\
 				$(STR_DIR)ft_strarr_join.c\
 
